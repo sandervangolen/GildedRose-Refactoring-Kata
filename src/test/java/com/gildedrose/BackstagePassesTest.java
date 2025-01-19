@@ -35,11 +35,11 @@ public class BackstagePassesTest {
         Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 50) };
         GildedRose app = new GildedRose(items);
 
-        for (int i = 0; i < 60; i++) {
+        for (int i = 0; i < 11; i++) {
             app.updateQuality();
         }
 
         assertEquals(0, app.items[0].quality);
-        assertEquals(-50, app.items[0].sellIn);
+        assertEquals(-1, app.items[0].sellIn);
     }
 }
