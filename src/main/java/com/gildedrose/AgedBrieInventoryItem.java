@@ -6,22 +6,16 @@ public class AgedBrieInventoryItem extends InventoryItem {
     }
 
     @Override
-    public void update() {
-        item.sellIn--;
-
+    public void updateQuality() {
         if (item.quality < 50) {
             item.quality++;
-
-            if (item.sellIn < 0) {
-                item.quality++;
-            }
         }
+    }
 
-        if (item.quality < 50) {
+    @Override
+    protected void sellInExpired() {
         if (item.sellIn < 0) {
-
-                item.quality += 1;
-            }
+            item.quality = Math.min(item.quality+1, 50);
         }
     }
 }
