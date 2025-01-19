@@ -17,4 +17,16 @@ public class ConjuredTest {
         assertEquals(18, conjured.quality);
         assertEquals(9, conjured.sellIn);
     }
+
+    @Test
+    public void degradesFourTimesAsFastWhenSellInIsNegative() {
+        Item[] items = new Item[] { new Item("Conjured", 0, 20) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        Item conjured = app.items[0];
+        assertEquals("Conjured", conjured.name);
+        assertEquals(16, conjured.quality);
+        assertEquals(-1, conjured.sellIn);
+    }
 }

@@ -5,5 +5,8 @@ public class ConjuredInventoryItem extends InventoryItem {
         super(item);
     }
 
-
+    @Override
+    protected void updateQuality() {
+        item.quality = Math.max(item.quality - 2, 0);
+    }
 }
