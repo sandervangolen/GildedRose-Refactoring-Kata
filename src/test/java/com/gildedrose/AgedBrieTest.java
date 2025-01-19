@@ -10,7 +10,7 @@ public class AgedBrieTest {
     public void qualityIncreases() {
         Item[] items = new Item[] { new Item("Aged Brie", 10, 20) };
         GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        app.update();
 
         Item agedBrie = app.items[0];
         assertEquals("Aged Brie", agedBrie.name);
@@ -24,7 +24,7 @@ public class AgedBrieTest {
         GildedRose app = new GildedRose(items);
 
         for (int i = 0; i < 60; i++) {
-            app.updateQuality();
+            app.update();
         }
 
         assertEquals(50, app.items[0].quality);

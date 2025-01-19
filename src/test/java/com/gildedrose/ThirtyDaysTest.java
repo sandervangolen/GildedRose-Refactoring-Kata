@@ -25,7 +25,7 @@ public class ThirtyDaysTest {
         int days = 30;
 
         for (int i = 0; i < days; i++) {
-            app.updateQuality();
+            app.update();
         }
 
         // +5 Dexterity Vest

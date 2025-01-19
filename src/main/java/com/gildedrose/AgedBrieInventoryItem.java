@@ -6,7 +6,7 @@ public class AgedBrieInventoryItem extends InventoryItem {
     }
 
     @Override
-    public void updateQuality() {
+    public void update() {
         item.sellIn--;
 
         if (item.quality < 50) {
@@ -14,6 +14,13 @@ public class AgedBrieInventoryItem extends InventoryItem {
 
             if (item.sellIn < 0) {
                 item.quality++;
+            }
+        }
+
+        if (item.quality < 50) {
+        if (item.sellIn < 0) {
+
+                item.quality += 1;
             }
         }
     }

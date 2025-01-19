@@ -6,7 +6,7 @@ public class BackstagePassesInventoryItem extends InventoryItem {
     }
 
     @Override
-    public void updateQuality() {
+    public void update() {
         if (item.quality < 50) {
             item.quality += 1;
 

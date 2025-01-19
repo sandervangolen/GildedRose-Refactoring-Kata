@@ -7,9 +7,9 @@ class GildedRose {
         this.items = items;
     }
 
-    public void updateQuality() {
+    public void update() {
         for (Item item : items) {
-            InventoryItem.create(item).updateQuality();
+            InventoryItemFactory.create(item).update();
         }
     }
 }
