@@ -23,6 +23,8 @@ public class InventoryItem {
     }
 
     protected void sellInExpired() {
-        item.quality = Math.max(item.quality-1, 0);
+        if (item.sellIn < 0) {
+            item.quality = Math.max(item.quality-1, 0);
+        }
     }
 }

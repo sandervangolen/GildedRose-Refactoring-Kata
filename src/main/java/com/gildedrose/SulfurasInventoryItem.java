@@ -3,6 +3,7 @@ package com.gildedrose;
 public class SulfurasInventoryItem extends InventoryItem {
     public SulfurasInventoryItem(Item item) {
         super(item);
+        item.quality = 80;
     }
 
     @Override
