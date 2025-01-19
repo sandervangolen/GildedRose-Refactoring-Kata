@@ -13,39 +13,20 @@ public class InventoryItem {
     }
 
     public static InventoryItem create(Item item) {
-        return new InventoryItem(item);
+        switch (item.name) {
+            case AGED_BRIE:
+                return new AgedBrieInventoryItem(item);
+            case BACKSTAGE_PASSES:
+                return new BackstagePassesInventoryItem(item);
+            case SULFURAS:
+                return new SulfurasInventoryItem(item);
+            default:
+                return new InventoryItem(item);
+        }
     }
 
     public void updateQuality() {
-        if (item.name.equals(AGED_BRIE) || item.name.equals(BACKSTAGE_PASSES)) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-
-                if (item.name.equals(BACKSTAGE_PASSES)) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality += 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality += 1;
-                        }
-                    }
-                }
-            }
-        } else {
-            if (!item.name.equals(SULFURAS)) {
-                if (item.quality > 0) {
-                    item.quality -= 1;
-                }
-            }
-        }
-
-        if (!item.name.equals(SULFURAS)) {
-            item.sellIn -= 1;
-        }
+        item.sellIn -= 1;
 
         if (item.sellIn < 0) {
             if (!item.name.equals(AGED_BRIE)) {
