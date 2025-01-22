@@ -1,12 +1,15 @@
 package com.gildedrose;
 
-public class BackstagePassesInventoryItem extends InventoryItem {
+public class BackstagePassesInventoryItem implements InventoryItem {
+
+    Item item;
+
     public BackstagePassesInventoryItem(Item item) {
-        super(item);
+        this.item = item;
     }
 
     @Override
-    protected void updateQuality() {
+    public InventoryItem updateQuality() {
         if (item.sellIn <= 5) {
             item.quality = Math.min(item.quality + 3, 50);
         } else if (item.sellIn <= 10) {
@@ -14,10 +17,20 @@ public class BackstagePassesInventoryItem extends InventoryItem {
         } else {
             item.quality = Math.min(item.quality + 1, 50);
         }
+        return this;
     }
 
     @Override
-    protected void handleExpired() {
-        item.quality = 0;
+    public InventoryItem updateDaysTillExpiration() {
+        item.sellIn -= 1;
+        return this;
+    }
+
+    @Override
+    public InventoryItem handleExpired() {
+        if (item.sellIn < 0) {
+            item.quality = 0;
+        }
+        return this;
     }
 }

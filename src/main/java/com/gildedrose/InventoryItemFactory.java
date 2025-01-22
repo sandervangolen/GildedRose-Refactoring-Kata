@@ -18,7 +18,7 @@ public class InventoryItemFactory {
             case CONJURED:
                 return new ConjuredInventoryItem(item);
             default:
-                return new InventoryItem(item);
+                return new DefaultInventoryItem(item);
         }
     }
 }

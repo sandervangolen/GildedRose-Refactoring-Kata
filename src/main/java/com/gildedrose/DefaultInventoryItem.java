@@ -1,28 +1,27 @@
 package com.gildedrose;
 
-public class SulfurasInventoryItem implements InventoryItem {
+public class DefaultInventoryItem implements InventoryItem {
 
     Item item;
-    public SulfurasInventoryItem(Item item) {
+
+    public DefaultInventoryItem(Item item) {
         this.item = item;
-        item.quality = 80;
     }
 
-    @Override
     public InventoryItem updateQuality() {
-        // do nothing
+        item.quality = Math.max(item.quality - 1, 0);
         return this;
     }
 
-    @Override
     public InventoryItem updateDaysTillExpiration() {
-        // do nothing
+        item.sellIn -= 1;
         return this;
     }
 
-    @Override
     public InventoryItem handleExpired() {
-        // do nothing
+        if (item.sellIn < 0) {
+            item.quality = Math.max(item.quality - 2, 0);
+        }
         return this;
     }
 }

@@ -1,17 +1,30 @@
 package com.gildedrose;
 
-public class AgedBrieInventoryItem extends InventoryItem {
+public class AgedBrieInventoryItem implements InventoryItem {
+
+    Item item;
+
     public AgedBrieInventoryItem(Item item) {
-        super(item);
+        this.item = item;
     }
 
     @Override
-    protected void updateQuality() {
+    public InventoryItem updateQuality() {
         item.quality = Math.min(item.quality + 1, 50);
+        return this;
     }
 
     @Override
-    protected void handleExpired() {
-        item.quality = Math.min(item.quality + 1, 50);
+    public InventoryItem updateDaysTillExpiration() {
+        item.sellIn -= 1;
+        return this;
+    }
+
+    @Override
+    public InventoryItem handleExpired() {
+        if (item.sellIn < 0) {
+            item.quality = Math.min(item.quality + 1, 50);
+        }
+        return this;
     }
 }
