@@ -29,4 +29,15 @@ public class ConjuredTest {
         assertEquals(16, conjured.quality);
         assertEquals(-1, conjured.sellIn);
     }
+
+    @Test
+    public void qualityNeverGoesBelowZero() {
+        Item[] items = new Item[] { new Item("Conjured Mana Cake", 10, 1) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        Item conjured = app.items[0];
+        assertEquals(0, conjured.quality);
+        assertEquals(9, conjured.sellIn);
+    }
 }

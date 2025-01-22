@@ -17,7 +17,6 @@ public class ThirtyDaysTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
             new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
             new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-            // this conjured item does not work properly yet
             new Item("Conjured Mana Cake", 3, 6) };
 
         GildedRose app = new GildedRose(items);
@@ -64,6 +63,7 @@ public class ThirtyDaysTest {
 
         // Conjured Mana Cake
 
-        // TODO fix
+        assertEquals(-27, items[8].sellIn);
+        assertEquals(0, items[8].quality);
     }
 }
