@@ -42,4 +42,14 @@ public class BackstagePassesTest {
         assertEquals(0, app.items[0].quality);
         assertEquals(-1, app.items[0].sellIn);
     }
+
+    @Test
+    public void qualityNeverGoesAbove50() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(46, app.items[0].quality);
+        assertEquals(2, app.items[0].sellIn);
+    }
 }
