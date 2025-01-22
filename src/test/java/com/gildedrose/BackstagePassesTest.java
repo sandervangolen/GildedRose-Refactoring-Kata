@@ -43,13 +43,129 @@ public class BackstagePassesTest {
         assertEquals(-1, app.items[0].sellIn);
     }
 
+    // Tier 1 sellin, testing edge cases
+
     @Test
-    public void qualityNeverGoesAbove50() {
+    public void sellin20quality48() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 20, 48) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(49, app.items[0].quality);
+        assertEquals(19, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin20quality49() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 20, 49) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
+        assertEquals(19, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin20quality50() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 20, 50) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
+        assertEquals(19, app.items[0].sellIn);
+    }
+
+    // Tier 2 sellin, testing edge cases
+
+    @Test
+    public void sellin10quality47() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 47) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(49, app.items[0].quality);
+        assertEquals(9, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin10quality48() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 48) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
+        assertEquals(9, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin10quality49() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
+        assertEquals(9, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin10quality50() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 50) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
+        assertEquals(9, app.items[0].sellIn);
+    }
+
+    // Tier 3 sellin, testing edge cases
+
+    @Test
+    public void sellin3quality46() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 3, 46) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(49, app.items[0].quality);
+        assertEquals(2, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin3quality47() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 3, 47) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
+        assertEquals(2, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin3quality48() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 3, 48) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
+        assertEquals(2, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin3quality49() {
         Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 3, 49) };
         GildedRose app = new GildedRose(items);
         app.update();
 
-        assertEquals(46, app.items[0].quality);
+        assertEquals(50, app.items[0].quality);
+        assertEquals(2, app.items[0].sellIn);
+    }
+
+    @Test
+    public void sellin3quality50() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 3, 50) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        assertEquals(50, app.items[0].quality);
         assertEquals(2, app.items[0].sellIn);
     }
 }
