@@ -21,9 +21,7 @@ public class BackstagePassesInventoryItem extends InventoryItem {
     }
 
     @Override
-    protected void sellInExpired() {
-        if (item.sellIn < 0) {
-            item.quality = 0;
-        }
+    protected void handleExpired() {
+        item.quality = 0;
     }
 }

@@ -8,23 +8,24 @@ public class InventoryItem {
         this.item = item;
     }
 
-    public void update() {
+    public void updateInventory() {
         updateQuality();
-        updateSellIn();
-        sellInExpired();
+        updateDaysTillExpiration();
+
+        if (item.sellIn < 0) {
+            handleExpired();
+        }
     }
 
     protected void updateQuality() {
-        item.quality = Math.max(item.quality-1, 0);
+        item.quality = Math.max(item.quality - 1, 0);
     }
 
-    protected void updateSellIn() {
+    protected void updateDaysTillExpiration() {
         item.sellIn -= 1;
     }
 
-    protected void sellInExpired() {
-        if (item.sellIn < 0) {
-            item.quality = Math.max(item.quality-2, 0);
-        }
+    protected void handleExpired() {
+        item.quality = Math.max(item.quality - 2, 0);
     }
 }
