@@ -7,12 +7,12 @@ public class SulfurasInventoryItem extends InventoryItem {
     }
 
     @Override
-    public void updateQuality() {
+    protected void updateQuality() {
         // do nothing
     }
 
     @Override
-    public void updateDaysTillExpiration() {
+    protected void updateDaysTillExpiration() {
         // do nothing
     }
 

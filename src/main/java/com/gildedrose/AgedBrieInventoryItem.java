@@ -6,7 +6,7 @@ public class AgedBrieInventoryItem extends InventoryItem {
     }
 
     @Override
-    public void updateQuality() {
+    protected void updateQuality() {
         item.quality = Math.min(item.quality + 1, 50);
     }
 
