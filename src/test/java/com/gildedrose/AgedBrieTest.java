@@ -30,4 +30,15 @@ public class AgedBrieTest {
         assertEquals(50, app.items[0].quality);
         assertEquals(-50, app.items[0].sellIn);
     }
+
+    @Test
+    public void qualityIncreasesWhenSellInIsNegative() {
+        Item[] items = new Item[] { new Item("Aged Brie", 0, 40) };
+        GildedRose app = new GildedRose(items);
+        app.update();
+
+        Item agedBrie = app.items[0];
+        assertEquals(42, agedBrie.quality);
+        assertEquals(-1, agedBrie.sellIn);
+    }
 }
